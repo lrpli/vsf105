@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programs — Volunteer State Flight 105</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-primary:       #0d2137;
+      --color-secondary:     #1e5b99;
+      --color-accent:        #c8a84b;
+      --color-accent-light:  #e8c96a;
+      --color-bg:            #f5f7fa;
+      --color-bg-alt:        #e8edf4;
+      --color-text:          #1a1f2e;
+      --color-text-light:    #5a6a82;
+      --color-top-bar:       #060f1a;
+      --color-top-bar-text:  #b8cfea;
+      --color-white:         #ffffff;
+      --radius:              6px;
+      --shadow:              0 4px 24px rgba(13,33,55,0.12);
+      --nav-height:          68px;
+      --topbar-height:       36px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', sans-serif; font-size: 17px; line-height: 1.65; color: var(--color-text); background: var(--color-bg); }
+
+    .top-bar { background: var(--color-top-bar); color: var(--color-top-bar-text); height: var(--topbar-height); display: flex; align-items: center; font-size: 13px; letter-spacing: 0.03em; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
+    .top-bar-inner { width: 100%; max-width: 1200px; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
+    .top-bar a { color: var(--color-top-bar-text); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .top-bar a:hover { color: var(--color-accent-light); }
+    .top-bar .divider { width: 1px; height: 16px; background: rgba(255,255,255,0.15); margin: 0 16px; }
+
+    nav { position: fixed; top: var(--topbar-height); left: 0; right: 0; height: var(--nav-height); background: var(--color-primary); display: flex; align-items: center; z-index: 999; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+    .nav-inner { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--color-white); }
+    .logo-mark { width: 42px; height: 42px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 14px; color: var(--color-primary); text-align: center; line-height: 1.1; flex-shrink: 0; }
+    .nav-brand-name { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 0.06em; line-height: 1.1; text-transform: uppercase; display: block; }
+    .nav-brand-sub { font-size: 11px; color: var(--color-accent); letter-spacing: 0.12em; text-transform: uppercase; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 14px; border-radius: var(--radius); transition: all 0.2s; border-bottom: 2px solid transparent; }
+    .nav-links a:hover, .nav-links a.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--color-white); border-radius: 2px; }
+
+    .page-top { padding-top: calc(var(--topbar-height) + var(--nav-height)); }
+    .page-hero { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%); color: var(--color-white); padding: 100px 24px 80px; text-align: center; position: relative; overflow: hidden; }
+    .page-hero::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 60px; background: var(--color-bg); clip-path: ellipse(55% 100% at 50% 100%); }
+    .page-hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1583395838144-4eab627d7593?w=1400&q=70'); background-size: cover; background-position: center; opacity: 0.15; }
+    .page-hero-content { position: relative; z-index: 1; }
+    .page-hero-label { font-family: 'Oswald', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 12px; }
+    .page-hero h1 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.8rem); letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.1; }
+    .page-hero p { color: rgba(255,255,255,0.78); font-size: 1.1rem; max-width: 560px; margin: 16px auto 0; }
+
+    section { padding: 80px 24px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-label { font-family: 'Oswald', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 10px; }
+    .section-title { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15; letter-spacing: 0.02em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 16px; }
+    .section-lead { font-size: 1.05rem; color: var(--color-text-light); max-width: 600px; line-height: 1.7; }
+    .section-head { margin-bottom: 52px; }
+
+    /* FEATURED PROGRAM */
+    .featured-program {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(13,33,55,0.18);
+      margin-bottom: 60px;
+    }
+    .featured-program img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      min-height: 340px;
+    }
+    .featured-body {
+      background: var(--color-primary);
+      color: var(--color-white);
+      padding: 52px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .featured-tag {
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 14px;
+    }
+    .featured-body h2 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .featured-body p { color: rgba(255,255,255,0.78); margin-bottom: 12px; line-height: 1.7; }
+    .featured-stat {
+      display: flex;
+      gap: 32px;
+      margin-top: 24px;
+    }
+    .stat-mini { text-align: center; }
+    .stat-mini .num { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 2rem; color: var(--color-accent); line-height: 1; }
+    .stat-mini .lbl { font-size: 12px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* PROGRAM CARDS */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .prog-card {
+      background: var(--color-white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .prog-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(13,33,55,0.18); }
+    .prog-card-img { height: 210px; overflow: hidden; position: relative; }
+    .prog-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .prog-card:hover .prog-card-img img { transform: scale(1.06); }
+    .prog-card-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--color-accent);
+      color: var(--color-primary);
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 3px;
+    }
+    .prog-body { padding: 28px; }
+    .prog-body h3 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary); margin-bottom: 10px; }
+    .prog-body p { color: var(--color-text-light); font-size: 0.95rem; line-height: 1.65; margin-bottom: 16px; }
+    .prog-meta { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-bg-alt); }
+    .prog-meta-item { font-size: 13px; color: var(--color-text-light); display: flex; align-items: center; gap: 6px; }
+    .prog-meta-item strong { color: var(--color-primary); }
+
+    /* SCHEDULE */
+    .schedule-list { display: flex; flex-direction: column; gap: 16px; }
+    .sched-item {
+      background: var(--color-white);
+      border-radius: 8px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      box-shadow: var(--shadow);
+      transition: border-left 0.2s;
+      border-left: 4px solid var(--color-bg-alt);
+    }
+    .sched-item:hover { border-left-color: var(--color-accent); }
+    .sched-date {
+      flex: 0 0 80px;
+      text-align: center;
+      font-family: 'Oswald', sans-serif;
+    }
+    .sched-date .month { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-light); }
+    .sched-date .day { font-size: 2rem; font-weight: 700; color: var(--color-primary); line-height: 1; }
+    .sched-divider { width: 1px; height: 48px; background: var(--color-bg-alt); }
+    .sched-info h4 { font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary); margin-bottom: 4px; }
+    .sched-info p { font-size: 0.9rem; color: var(--color-text-light); }
+    .sched-tag { margin-left: auto; flex-shrink: 0; font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: 3px; background: var(--color-bg-alt); color: var(--color-text-light); }
+    .sched-tag.featured { background: rgba(200,168,75,0.15); color: var(--color-accent); }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius); font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; cursor: pointer; border: none; transition: all 0.25s; }
+    .btn-primary { background: var(--color-accent); color: var(--color-primary); }
+    .btn-primary:hover { background: var(--color-accent-light); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(200,168,75,0.4); }
+    .cta-band { background: var(--color-accent); text-align: center; padding: 60px 24px; }
+    .cta-band h2 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 2rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-primary); margin-bottom: 14px; }
+    .cta-band p { color: rgba(13,33,55,0.75); max-width: 500px; margin: 0 auto 28px; }
+    .btn-dark { background: var(--color-primary); color: var(--color-white); }
+    .btn-dark:hover { background: #112947; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.3); }
+
+    footer { background: var(--color-top-bar); color: rgba(255,255,255,0.65); padding: 60px 24px 30px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-brand p { font-size: 0.9rem; line-height: 1.65; margin-top: 14px; max-width: 280px; }
+    .footer-col h4 { font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--color-accent); }
+    .footer-social { display: flex; gap: 12px; margin-top: 16px; }
+    .footer-social a { width: 36px; height: 36px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); text-decoration: none; transition: all 0.2s; font-size: 15px; }
+    .footer-social a:hover { background: var(--color-accent); color: var(--color-primary); }
+    .footer-bottom { max-width: 1200px; margin: 24px auto 0; display: flex; justify-content: space-between; align-items: center; font-size: 13px; flex-wrap: wrap; gap: 10px; }
+
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .featured-program { grid-template-columns: 1fr; }
+      .featured-program img { min-height: 260px; max-height: 300px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: calc(var(--topbar-height) + var(--nav-height)); left: 0; right: 0; background: var(--color-primary); padding: 16px 24px; gap: 0; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+      .nav-links.open a { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); border-radius: 0; }
+      .hamburger { display: flex; }
+      .sched-tag { display: none; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) { .footer-inner { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <a href="mailto:info@vsf105.us">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@vsf105.us
+      </a>
+      <div class="divider"></div>
+      <a href="https://vsf105.us">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        vsf105.us
+      </a>
+    </div>
+  </div>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html">
+        <div class="logo-mark">VSF<br>105</div>
+        <div>
+          <span class="nav-brand-name">Volunteer State Flight 105</span>
+          <span class="nav-brand-sub">Lenoir City, Tennessee</span>
+        </div>
+      </a>
+      <button class="hamburger" aria-label="Menu" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="mission.html">Mission</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="projects.html" class="active">Programs</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-top"></div>
+
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <div class="page-hero-label">&#9992; Programs &amp; Events</div>
+      <h1>What We Do</h1>
+      <p>From free first flights for kids to community fly-ins, VSF105 keeps aviation alive and thriving in East Tennessee.</p>
+    </div>
+  </div>
+
+  <!-- FEATURED: YOUNG EAGLES -->
+  <section style="background: var(--color-bg);">
+    <div class="container">
+      <div class="section-head fade-in">
+        <div class="section-label">Featured Program</div>
+        <h2 class="section-title">Young Eagles — Our Flagship</h2>
+      </div>
+      <div class="featured-program fade-in">
+        <img src="https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=900&q=85" alt="Small aircraft on airfield, ready for Young Eagles flight" loading="lazy" />
+        <div class="featured-body">
+          <div class="featured-tag">&#9992; EAA Young Eagles Program</div>
+          <h2>First Flights That Change Lives</h2>
+          <p>Young Eagles is the world's largest youth aviation program — and VSF105 is proud to be an active chapter. We provide free airplane rides to children ages 8–17, introducing them to general aviation and the possibilities that come with it.</p>
+          <p>No experience needed. Just curiosity, enthusiasm, and a desire to look at the world from 3,000 feet. Volunteer pilots donate their time and aircraft to make every flight possible.</p>
+          <div class="featured-stat">
+            <div class="stat-mini">
+              <div class="num">500+</div>
+              <div class="lbl">Eagles Flown</div>
+            </div>
+            <div class="stat-mini">
+              <div class="num">Free</div>
+              <div class="lbl">Always &amp; Forever</div>
+            </div>
+            <div class="stat-mini">
+              <div class="num">Ages<br>8–17</div>
+              <div class="lbl">All Welcome</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAM CARDS -->
+  <section style="background: var(--color-bg-alt);">
+    <div class="container">
+      <div class="section-head fade-in">
+        <div class="section-label">All Programs</div>
+        <h2 class="section-title">Ways to Get Involved</h2>
+        <p class="section-lead">Whether you fly, wrench, or just love watching airplanes, there's a program at VSF105 for you.</p>
+      </div>
+      <div class="programs-grid">
+        <div class="prog-card fade-in">
+          <div class="prog-card-img">
+            <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=700&q=80" alt="Aircraft cockpit instruments" loading="lazy" />
+            <span class="prog-card-badge">Training</span>
+          </div>
+          <div class="prog-body">
+            <h3>Pilot Training Support</h3>
+            <p>VSF105 connects student pilots with experienced Certificated Flight Instructors (CFIs), provides ground school study groups, and offers mentorship from active members who have navigated every certificate from Sport Pilot to ATP.</p>
+            <div class="prog-meta">
+              <div class="prog-meta-item"><strong>Open to:</strong> All skill levels</div>
+              <div class="prog-meta-item"><strong>Cost:</strong> Member benefit</div>
+            </div>
+          </div>
+        </div>
+        <div class="prog-card fade-in">
+          <div class="prog-card-img">
+            <img src="https://images.unsplash.com/photo-1583395838144-4eab627d7593?w=700&q=80" alt="Aircraft at a regional airshow" loading="lazy" />
+            <span class="prog-card-badge">Events</span>
+          </div>
+          <div class="prog-body">
+            <h3>Annual Fly-In &amp; Open House</h3>
+            <p>Every summer, VSF105 hosts a signature fly-in and open house that draws pilots and aviation fans from across East Tennessee and the greater Southeast. Enjoy aircraft displays, food, and a day of everything aviation.</p>
+            <div class="prog-meta">
+              <div class="prog-meta-item"><strong>Frequency:</strong> Annual (Summer)</div>
+              <div class="prog-meta-item"><strong>Open to:</strong> Public</div>
+            </div>
+          </div>
+        </div>
+        <div class="prog-card fade-in">
+          <div class="prog-card-img">
+            <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=700&q=80" alt="Pilot preparing aircraft for flight" loading="lazy" />
+            <span class="prog-card-badge">Build</span>
+          </div>
+          <div class="prog-body">
+            <h3>Homebuilder's Workshop</h3>
+            <p>For the EAA builders among us — the chapter supports experimental aircraft construction and restoration projects through shared workspace, tool access, and the collective expertise of experienced builders.</p>
+            <div class="prog-meta">
+              <div class="prog-meta-item"><strong>Open to:</strong> Members</div>
+              <div class="prog-meta-item"><strong>Meetings:</strong> Monthly</div>
+            </div>
+          </div>
+        </div>
+        <div class="prog-card fade-in">
+          <div class="prog-card-img">
+            <img src="https://images.unsplash.com/photo-1565016388636-b5a87f96da39?w=700&q=80" alt="Aerial view, community outreach perspective" loading="lazy" />
+            <span class="prog-card-badge">Service</span>
+          </div>
+          <div class="prog-body">
+            <h3>Community Outreach Flights</h3>
+            <p>VSF105 pilots volunteer for community service missions including medical supply transport, search and rescue support coordination, and participation in state emergency response networks.</p>
+            <div class="prog-meta">
+              <div class="prog-meta-item"><strong>Open to:</strong> Certificated pilots</div>
+              <div class="prog-meta-item"><strong>Type:</strong> Volunteer</div>
+            </div>
+          </div>
+        </div>
+        <div class="prog-card fade-in">
+          <div class="prog-card-img">
+            <img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?w=700&q=80" alt="Sunset flight, social event flying" loading="lazy" />
+            <span class="prog-card-badge">Social</span>
+          </div>
+          <div class="prog-body">
+            <h3>Chapter Meetups &amp; $100 Hamburgers</h3>
+            <p>Monthly chapter meetings, hangar talks, and informal $100 hamburger fly-outs to destinations around Tennessee and the Southeast. This is where friendships and aviation stories are made.</p>
+            <div class="prog-meta">
+              <div class="prog-meta-item"><strong>Frequency:</strong> Monthly+</div>
+              <div class="prog-meta-item"><strong>Open to:</strong> All members</div>
+            </div>
+          </div>
+        </div>
+        <div class="prog-card fade-in">
+          <div class="prog-card-img">
+            <img src="https://images.unsplash.com/photo-1436891620584-47fd0e565afb?w=700&q=80" alt="Light aircraft in flight over countryside" loading="lazy" />
+            <span class="prog-card-badge">Education</span>
+          </div>
+          <div class="prog-body">
+            <h3>Aviation Safety Seminars</h3>
+            <p>Regular safety seminars featuring FAA Wings credit opportunities, weather briefings, airspace refreshers, and guest presentations from air traffic controllers, experienced pilots, and aviation safety experts.</p>
+            <div class="prog-meta">
+              <div class="prog-meta-item"><strong>FAA Wings:</strong> Credit available</div>
+              <div class="prog-meta-item"><strong>Cost:</strong> Free to attend</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPCOMING EVENTS -->
+  <section style="background: var(--color-white);">
+    <div class="container">
+      <div class="section-head fade-in">
+        <div class="section-label">Calendar</div>
+        <h2 class="section-title">Upcoming Events</h2>
+        <p class="section-lead">Stay connected — here's what's on the VSF105 calendar. Check back or contact us for the latest schedule.</p>
+      </div>
+      <div class="schedule-list">
+        <div class="sched-item fade-in">
+          <div class="sched-date"><div class="month">Jul</div><div class="day">12</div></div>
+          <div class="sched-divider"></div>
+          <div class="sched-info">
+            <h4>Monthly Chapter Meeting</h4>
+            <p>507 Millstone Lane, Lenoir City &nbsp;·&nbsp; 7:00 PM</p>
+          </div>
+          <div class="sched-tag">Regular</div>
+        </div>
+        <div class="sched-item fade-in">
+          <div class="sched-date"><div class="month">Jul</div><div class="day">20</div></div>
+          <div class="sched-divider"></div>
+          <div class="sched-info">
+            <h4>Young Eagles Rally</h4>
+            <p>Local airfield, Lenoir City area &nbsp;·&nbsp; 8:00 AM – Noon</p>
+          </div>
+          <div class="sched-tag featured">Featured</div>
+        </div>
+        <div class="sched-item fade-in">
+          <div class="sched-date"><div class="month">Aug</div><div class="day">3</div></div>
+          <div class="sched-divider"></div>
+          <div class="sched-info">
+            <h4>$100 Hamburger Fly-Out</h4>
+            <p>Destination TBD &nbsp;·&nbsp; Departing 10:00 AM</p>
+          </div>
+          <div class="sched-tag">Social</div>
+        </div>
+        <div class="sched-item fade-in">
+          <div class="sched-date"><div class="month">Aug</div><div class="day">16</div></div>
+          <div class="sched-divider"></div>
+          <div class="sched-info">
+            <h4>Aviation Safety Seminar — FAA Wings</h4>
+            <p>507 Millstone Lane &nbsp;·&nbsp; 6:30 PM &nbsp;·&nbsp; FAA Wings credit available</p>
+          </div>
+          <div class="sched-tag">Education</div>
+        </div>
+        <div class="sched-item fade-in">
+          <div class="sched-date"><div class="month">Sep</div><div class="day">6</div></div>
+          <div class="sched-divider"></div>
+          <div class="sched-info">
+            <h4>Annual Fall Fly-In &amp; Open House</h4>
+            <p>Lenoir City, TN &nbsp;·&nbsp; All day event — public welcome</p>
+          </div>
+          <div class="sched-tag featured">Featured</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <h2 class="fade-in">Ready to Participate?</h2>
+    <p class="fade-in">Reach out to learn more about any of our programs or to bring your family to a Young Eagles event.</p>
+    <a href="contact.html" class="btn btn-dark fade-in">Contact VSF105</a>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+          <div class="logo-mark">VSF<br>105</div>
+          <div>
+            <div style="font-family:'Oswald',sans-serif; font-weight:700; font-size:16px; letter-spacing:0.06em; text-transform:uppercase; color:#fff; line-height:1.1;">Volunteer State Flight 105</div>
+            <div style="font-size:11px; color:var(--color-accent); letter-spacing:0.12em; text-transform:uppercase;">Lenoir City, Tennessee</div>
+          </div>
+        </div>
+        <p>Serving East Tennessee's aviation community with passion, purpose, and a love of flight.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">&#9679;</a>
+          <a href="#" aria-label="YouTube">&#9654;</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="index.html">Home</a></li><li><a href="mission.html">Mission</a></li><li><a href="history.html">History</a></li><li><a href="projects.html">Programs</a></li><li><a href="team.html">Team</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Programs</h4><ul><li><a href="projects.html">Flight Training</a></li><li><a href="projects.html">Young Eagles</a></li><li><a href="projects.html">Fly-Ins</a></li><li><a href="projects.html">Community Outreach</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">507 Millstone Lane</a></li><li><a href="#">Lenoir City, TN 37772</a></li><li><a href="mailto:info@vsf105.us">info@vsf105.us</a></li><li><a href="https://vsf105.us">vsf105.us</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2024 Volunteer State Flight 105. All rights reserved.</span>
+      <span>507 Millstone Lane, Lenoir City, TN 37772</span>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 80); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
