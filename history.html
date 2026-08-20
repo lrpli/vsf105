@@ -44,6 +44,8 @@
     .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
     .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 14px; border-radius: var(--radius); transition: all 0.2s; border-bottom: 2px solid transparent; }
     .nav-links a:hover, .nav-links a.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+    .nav-links a.nav-donate { background: var(--color-accent); color: var(--color-primary); border-radius: var(--radius); }
+    .nav-links a.nav-donate:hover { background: var(--color-accent-light); color: var(--color-primary); border-bottom-color: transparent; }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--color-white); border-radius: 2px; }
 
@@ -128,9 +130,7 @@
     .footer-col ul li { margin-bottom: 10px; }
     .footer-col ul a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: color 0.2s; }
     .footer-col ul a:hover { color: var(--color-accent); }
-    .footer-social { display: flex; gap: 12px; margin-top: 16px; }
-    .footer-social a { width: 36px; height: 36px; background: rgba(255,255,255,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); text-decoration: none; transition: all 0.2s; font-size: 15px; }
-    .footer-social a:hover { background: var(--color-accent); color: var(--color-primary); }
+    .footer-legal { max-width: 1200px; margin: 0 auto; padding-top: 24px; text-align: center; font-size: 12.5px; color: rgba(255,255,255,0.42); line-height: 1.6; }
     .footer-bottom { max-width: 1200px; margin: 24px auto 0; display: flex; justify-content: space-between; align-items: center; font-size: 13px; flex-wrap: wrap; gap: 10px; }
 
     .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -161,14 +161,14 @@
 
   <div class="top-bar">
     <div class="top-bar-inner">
-      <a href="mailto:info@vsf105.us">
+      <a href="mailto:Phil.Holt@vsf105.com">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        info@vsf105.us
+        Phil.Holt@vsf105.com
       </a>
       <div class="divider"></div>
-      <a href="https://vsf105.us">
+      <a href="https://vsf105.com">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        vsf105.us
+        vsf105.com
       </a>
     </div>
   </div>
@@ -192,6 +192,7 @@
         <li><a href="projects.html">Programs</a></li>
         <li><a href="team.html">Team</a></li>
         <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html#support" class="nav-donate">Donate</a></li>
       </ul>
     </div>
   </nav>
@@ -318,11 +319,6 @@
           </div>
         </div>
         <p>Serving East Tennessee's aviation community with passion, purpose, and a love of flight.</p>
-        <div class="footer-social">
-          <a href="#" aria-label="Facebook">f</a>
-          <a href="#" aria-label="Instagram">&#9679;</a>
-          <a href="#" aria-label="YouTube">&#9654;</a>
-        </div>
       </div>
       <div class="footer-col">
         <h4>Navigate</h4>
@@ -347,15 +343,16 @@
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
-          <li><a href="#">507 Millstone Lane</a></li>
-          <li><a href="#">Lenoir City, TN 37772</a></li>
-          <li><a href="mailto:info@vsf105.us">info@vsf105.us</a></li>
-          <li><a href="https://vsf105.us">vsf105.us</a></li>
+          <li><a href="https://maps.google.com/?q=507+Millstone+Lane+Lenoir+City+TN+37772" target="_blank" rel="noopener">507 Millstone Lane</a></li>
+          <li><a href="https://maps.google.com/?q=507+Millstone+Lane+Lenoir+City+TN+37772" target="_blank" rel="noopener">Lenoir City, TN 37772</a></li>
+          <li><a href="mailto:Phil.Holt@vsf105.com">Phil.Holt@vsf105.com</a></li>
+          <li><a href="https://vsf105.com">vsf105.com</a></li>
         </ul>
       </div>
     </div>
+    <div class="footer-legal">Volunteer State Flight 105 is a 501(c)(3) nonprofit organization. EIN 99-3180085. Gifts are tax-deductible to the extent allowed by law.</div>
     <div class="footer-bottom">
-      <span>&copy; 2024 Volunteer State Flight 105. All rights reserved.</span>
+      <span>&copy; 2026 Volunteer State Flight 105. All rights reserved.</span>
       <span>507 Millstone Lane, Lenoir City, TN 37772</span>
     </div>
   </footer>
