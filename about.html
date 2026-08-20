@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>History — Volunteer State Flight 105</title>
+  <title>About — Volunteer State Flight 105</title>
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://vsf105.com/history.html" />
-  <meta property="og:title" content="History — Volunteer State Flight 105" />
+  <meta property="og:url" content="https://vsf105.com/about.html" />
+  <meta property="og:title" content="About — Volunteer State Flight 105" />
   <meta property="og:description" content="Volunteer State Flight 105 is a community of aviators, student pilots, and aviation enthusiasts in Lenoir City, Tennessee." />
   <meta property="og:image" content="https://vsf105.com/images/social-card.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -39,7 +39,7 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Source Sans 3', sans-serif; font-size: 17px; line-height: 1.65; color: var(--color-text); background: var(--color-bg); }
 
-    .top-bar { background: var(--color-top-bar); color: var(--color-top-bar-text); height: var(--topbar-height); display: flex; align-items: center; font-size: 13px; letter-spacing: 0.03em; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
+    .top-bar { background: var(--color-top-bar); color: var(--color-top-bar-text); height: var(--topbar-height); display: flex; align-items: center; justify-content: center; font-size: 13px; letter-spacing: 0.03em; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
     .top-bar-inner { width: 100%; max-width: 1200px; display: flex; justify-content: space-between; align-items: center; padding: 0 24px; }
     .top-bar a { color: var(--color-top-bar-text); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
     .top-bar a:hover { color: var(--color-accent-light); }
@@ -48,7 +48,7 @@
     nav { position: fixed; top: var(--topbar-height); left: 0; right: 0; height: var(--nav-height); background: var(--color-primary); display: flex; align-items: center; z-index: 999; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
     .nav-inner { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
     .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--color-white); }
-    .logo-mark { width: 42px; height: 42px; display: block; flex-shrink: 0; }
+    .nav-brand .logo-mark { width: 42px; height: 42px; display: block; flex-shrink: 0; }
     .nav-brand-name { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 0.06em; line-height: 1.1; text-transform: uppercase; display: block; }
     .nav-brand-sub { font-size: 11px; color: var(--color-accent); letter-spacing: 0.12em; text-transform: uppercase; display: block; }
     .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
@@ -57,10 +57,11 @@
     .nav-links a.nav-donate { background: var(--color-accent); color: var(--color-primary); border-radius: var(--radius); }
     .nav-links a.nav-donate:hover { background: var(--color-accent-light); color: var(--color-primary); border-bottom-color: transparent; }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--color-white); border-radius: 2px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--color-white); border-radius: 2px; transition: all 0.3s; }
 
     .page-top { padding-top: calc(var(--topbar-height) + var(--nav-height)); }
 
+    /* PAGE HERO */
     .page-hero { background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%); color: var(--color-white); padding: 100px 24px 80px; text-align: center; position: relative; overflow: hidden; }
     .page-hero::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 60px; background: var(--color-bg); clip-path: ellipse(55% 100% at 50% 100%); }
     .page-hero-bg { position: absolute; inset: 0; background-image: url('images/sunset-silhouette.jpg'); background-size: cover; background-position: center; filter: saturate(0.85) contrast(1.05); opacity: 0.12; }
@@ -73,65 +74,61 @@
     .section-label { font-family: 'Oswald', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 10px; }
     .section-title { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15; letter-spacing: 0.02em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 16px; }
     .section-lead { font-size: 1.05rem; color: var(--color-text-light); max-width: 680px; line-height: 1.7; }
+    .section-head { margin-bottom: 52px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius); font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; cursor: pointer; border: none; transition: all 0.25s; }
+    .btn-primary { background: var(--color-accent); color: var(--color-primary); }
+    .btn-primary:hover { background: var(--color-accent-light); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(200,168,75,0.4); }
+
+    /* MISSION STATEMENT */
+    .mission-statement { background: var(--color-white); border-left: 6px solid var(--color-accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 36px 40px; margin-bottom: 48px; box-shadow: var(--shadow); }
+    .mission-statement .label { font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 12px; }
+    .mission-statement p { font-size: 1.25rem; font-weight: 600; color: var(--color-primary); line-height: 1.6; }
+
+    /* VALUES */
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+    .value-card { background: var(--color-white); border-radius: 10px; padding: 32px 28px; box-shadow: var(--shadow); border-top: 4px solid transparent; transition: all 0.25s; }
+    .value-card:hover { border-top-color: var(--color-accent); transform: translateY(-4px); }
+    .value-icon { font-size: 2.5rem; margin-bottom: 16px; display: block; }
+    .value-card h3 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-primary); margin-bottom: 10px; }
+    .value-card p { color: var(--color-text-light); font-size: 0.95rem; line-height: 1.65; }
 
     /* FOUNDING STORY */
-    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 60px; }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
     .story-grid img { width: 100%; border-radius: 10px; box-shadow: var(--shadow); aspect-ratio: 16/11; object-fit: cover; display: block; }
     .story-grid h2 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 2rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-primary); margin-bottom: 18px; }
     .story-grid p { color: var(--color-text-light); margin-bottom: 14px; line-height: 1.7; }
 
     /* TIMELINE */
     .timeline { position: relative; max-width: 860px; margin: 0 auto; }
-    .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--color-bg-alt); transform: translateX(-50%); }
+    .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--color-white); transform: translateX(-50%); }
     .timeline-item { display: flex; gap: 40px; margin-bottom: 56px; align-items: flex-start; }
     .timeline-item:nth-child(even) { flex-direction: row-reverse; }
     .timeline-item:nth-child(even) .timeline-content { text-align: right; }
-    .timeline-year {
-      flex: 0 0 calc(50% - 28px);
-      text-align: right;
-    }
+    .timeline-year { flex: 0 0 calc(50% - 28px); text-align: right; }
     .timeline-item:nth-child(even) .timeline-year { text-align: left; }
-    .timeline-year-badge {
-      display: inline-block;
-      background: var(--color-primary);
-      color: var(--color-accent);
-      font-family: 'Oswald', sans-serif;
-      font-weight: 700;
-      font-size: 1.15rem;
-      padding: 8px 20px;
-      border-radius: 40px;
-      letter-spacing: 0.08em;
-    }
-    .timeline-dot {
-      flex: 0 0 16px;
-      width: 16px;
-      height: 16px;
-      background: var(--color-accent);
-      border-radius: 50%;
-      margin-top: 14px;
-      flex-shrink: 0;
-      position: relative;
-      z-index: 1;
-      box-shadow: 0 0 0 4px var(--color-bg);
-    }
-    .timeline-content {
-      flex: 0 0 calc(50% - 28px);
-    }
+    .timeline-year-badge { display: inline-block; background: var(--color-primary); color: var(--color-accent); font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.15rem; padding: 8px 20px; border-radius: 40px; letter-spacing: 0.08em; }
+    .timeline-dot { flex: 0 0 16px; width: 16px; height: 16px; background: var(--color-accent); border-radius: 50%; margin-top: 14px; flex-shrink: 0; position: relative; z-index: 1; box-shadow: 0 0 0 4px var(--color-bg-alt); }
+    .timeline-content { flex: 0 0 calc(50% - 28px); }
     .timeline-content h3 { font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary); margin-bottom: 8px; }
     .timeline-content p { color: var(--color-text-light); font-size: 0.95rem; line-height: 1.65; }
 
-    /* PHOTO STRIP */
+    /* VISION SPLIT + PHOTO STRIP */
+    .vision-split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 64px; }
+    .vision-split img { width: 100%; border-radius: 10px; box-shadow: var(--shadow); aspect-ratio: 4/3; object-fit: cover; display: block; }
+    .vision-split h2 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 2rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-primary); margin-bottom: 18px; }
+    .vision-split p { color: var(--color-text-light); margin-bottom: 14px; line-height: 1.7; }
     .photo-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .photo-row img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; box-shadow: var(--shadow); display: block; transition: transform 0.3s; }
     .photo-row img:hover { transform: scale(1.02); }
 
+    /* CTA BAND */
     .cta-band { background: var(--color-accent); text-align: center; padding: 60px 24px; }
     .cta-band h2 { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 2rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-primary); margin-bottom: 14px; }
     .cta-band p { color: rgba(13,33,55,0.75); max-width: 500px; margin: 0 auto 28px; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius); font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; cursor: pointer; border: none; transition: all 0.25s; }
     .btn-dark { background: var(--color-primary); color: var(--color-white); }
     .btn-dark:hover { background: #112947; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.3); }
 
+    /* FOOTER */
     footer { background: var(--color-top-bar); color: rgba(255,255,255,0.65); padding: 60px 24px 30px; }
     .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); }
     .footer-brand p { font-size: 0.9rem; line-height: 1.65; margin-top: 14px; max-width: 280px; }
@@ -152,6 +149,8 @@
       .nav-links.open a { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); border-radius: 0; }
       .hamburger { display: flex; }
       .story-grid { grid-template-columns: 1fr; }
+      .vision-split { grid-template-columns: 1fr; }
+      .mission-statement { padding: 24px; }
       .timeline::before { left: 20px; }
       .timeline-item, .timeline-item:nth-child(even) { flex-direction: column; gap: 16px; padding-left: 48px; }
       .timeline-year, .timeline-item:nth-child(even) .timeline-year { text-align: left; flex: none; }
@@ -197,8 +196,7 @@
       </button>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="mission.html">Mission</a></li>
-        <li><a href="history.html" class="active">History</a></li>
+        <li><a href="about.html" class="active">About</a></li>
         <li><a href="projects.html">Programs</a></li>
         <li><a href="team.html">Team</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -212,18 +210,38 @@
   <div class="page-hero">
     <div class="page-hero-bg"></div>
     <div class="page-hero-content">
-      <div class="page-hero-label">&#9992; Our Story</div>
-      <h1>History</h1>
+      <div class="page-hero-label">&#9992; Who We Are</div>
+      <h1>About Us</h1>
     </div>
   </div>
 
-  <!-- FOUNDING STORY -->
-  <section style="background: var(--color-bg);">
+  <!-- MISSION & VISION -->
+  <section id="mission" style="background: var(--color-bg);">
     <div class="container">
+      <div class="section-head fade-in">
+        <div class="section-label">Our Purpose</div>
+        <h2 class="section-title">Why We Fly</h2>
+      </div>
+      <div class="mission-statement fade-in">
+        <div class="label">Mission Statement</div>
+        <p>Volunteer State Flight 105 exists to promote, preserve, and advance the art and science of flight in East Tennessee — building community among aviators, inspiring the next generation, and serving our neighbors through the unique power of aviation.</p>
+      </div>
+      <div class="mission-statement fade-in" style="border-left-color: var(--color-secondary);">
+        <div class="label" style="color: var(--color-secondary);">Vision Statement</div>
+        <p>A Tennessee where every person who looks up at the sky sees possibility — and where our chapter is the bridge that turns that curiosity into a lifelong connection with aviation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDING STORY -->
+  <section id="history" style="background: var(--color-bg-alt);">
+    <div class="container">
+      <div class="section-head fade-in">
+        <div class="section-label">How It Began</div>
+        <h2 class="section-title">A Passion for Flight, Rooted in Tennessee Soil</h2>
+      </div>
       <div class="story-grid">
         <div class="fade-in">
-          <div class="section-label">How It Began</div>
-          <h2>A Passion for Flight, Rooted in Tennessee Soil</h2>
           <p>Volunteer State Flight 105 was born from a simple, powerful idea: that the love of flying is better when shared. A small group of East Tennessee aviators — neighbors, mechanics, dreamers, and pilots — gathered in Lenoir City with the conviction that their community deserved an aviation chapter that reflected its spirit.</p>
           <p>Meeting in hangars, around kitchen tables, and at local fly-ins, the founding members pooled their skills, their time, and their passion to build something lasting. They chose the name "Volunteer State Flight 105" to honor Tennessee's legacy of service and sacrifice — the same spirit that has always defined the Volunteer State.</p>
           <p>From those early days, the chapter has grown into one of the most active aviation communities in the region, hosting Young Eagles events that have introduced hundreds of local children to the miracle of flight, and standing as a gathering place for pilots from across East Tennessee.</p>
@@ -236,7 +254,7 @@
   </section>
 
   <!-- TIMELINE -->
-  <section style="background: var(--color-bg-alt);">
+  <section style="background: var(--color-bg);">
     <div class="container">
       <div class="section-head fade-in" style="text-align:center; margin-bottom:64px;">
         <div class="section-label">Milestones</div>
@@ -296,9 +314,65 @@
     </div>
   </section>
 
-  <!-- PHOTO STRIP -->
+  <!-- CORE VALUES -->
+  <section style="background: var(--color-bg-alt);">
+    <div class="container">
+      <div class="section-head fade-in">
+        <div class="section-label">What Guides Us</div>
+        <h2 class="section-title">Core Values</h2>
+        <p class="section-lead">Everything we do — every flight, every event, every conversation — is grounded in these principles.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card fade-in">
+          <span class="value-icon">&#9992;</span>
+          <h3>Safety First</h3>
+          <p>Every decision begins and ends with safety. We promote rigorous standards, continuous learning, and a culture where no flight is worth a compromise on safety.</p>
+        </div>
+        <div class="value-card fade-in">
+          <span class="value-icon">&#127968;</span>
+          <h3>Community</h3>
+          <p>Aviation is better shared. We welcome pilots of all skill levels, families, students, and dreamers — building genuine relationships that go beyond the hangar.</p>
+        </div>
+        <div class="value-card fade-in">
+          <span class="value-icon">&#127891;</span>
+          <h3>Education</h3>
+          <p>We believe in lifelong learning. From ground school to advanced ratings, we support knowledge and skill development at every stage of an aviator's journey.</p>
+        </div>
+        <div class="value-card fade-in">
+          <span class="value-icon">&#127759;</span>
+          <h3>Service</h3>
+          <p>We use aviation as a tool for good — transporting supplies, supporting search and rescue networks, and giving back to the communities that support us.</p>
+        </div>
+        <div class="value-card fade-in">
+          <span class="value-icon">&#9734;</span>
+          <h3>Excellence</h3>
+          <p>We hold ourselves to high standards in airmanship, conduct, and stewardship. Every flight is a chance to represent our chapter and community with pride.</p>
+        </div>
+        <div class="value-card fade-in">
+          <span class="value-icon">&#128161;</span>
+          <h3>Inspiration</h3>
+          <p>We actively work to ignite a passion for aviation in youth and newcomers through Young Eagles flights, mentorship, and visible presence in our community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR HOME: COMMITMENT + HOME SKIES -->
   <section style="background: var(--color-white);">
     <div class="container">
+      <div class="vision-split">
+        <div class="fade-in">
+          <img src="images/airfield-gloucestershire.jpg" alt="Small aircraft at airfield, Tennessee" loading="lazy" />
+        </div>
+        <div class="fade-in">
+          <div class="section-label">Our Commitment</div>
+          <h2>Built for East Tennessee Aviators</h2>
+          <p>Volunteer State Flight 105 is proud to call Lenoir City, Tennessee home. Nestled in the heart of the Tennessee Valley, we operate where the Smoky Mountains meet the sky — some of the most scenic flying in the entire Southeast.</p>
+          <p>Our chapter is affiliated with EAA (Experimental Aircraft Association) principles and embraces a broad community of homebuilders, sport pilots, certificated pilots, and aviation enthusiasts who share a love for everything that flies.</p>
+          <p>We are self-funded, volunteer-run, and entirely member-supported. That means every dollar and every hour goes directly back into programs, events, and resources that benefit our aviators and our community.</p>
+          <a href="contact.html" class="btn btn-primary" style="margin-top: 10px;">Join Our Chapter</a>
+        </div>
+      </div>
       <div class="section-head fade-in">
         <div class="section-label">Our Home Skies</div>
         <h2 class="section-title">Flying in East Tennessee</h2>
@@ -314,15 +388,15 @@
 
   <div class="cta-band">
     <h2 class="fade-in">Be Part of the Story</h2>
-    <p class="fade-in">Our history is still being written. Come add your chapter to VSF105.</p>
-    <a href="contact.html" class="btn btn-dark fade-in">Connect With Us</a>
+    <p class="fade-in">VSF105 is more than a flying club — we're a community with a mission, still writing our chapter. Come find out what makes East Tennessee aviation special.</p>
+    <a href="contact.html" class="btn btn-dark fade-in">Get in Touch</a>
   </div>
 
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
         <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-          <img src="images/logo.svg" alt="VSF105" class="logo-mark" />
+          <img src="images/logo.svg" alt="VSF105" class="logo-mark" style="width:42px; height:42px; display:block; flex-shrink:0;" />
           <div>
             <div style="font-family:'Oswald',sans-serif; font-weight:700; font-size:16px; letter-spacing:0.06em; text-transform:uppercase; color:#fff; line-height:1.1;">Volunteer State Flight 105</div>
             <div style="font-size:11px; color:var(--color-accent); letter-spacing:0.12em; text-transform:uppercase;">Lenoir City, Tennessee</div>
@@ -334,8 +408,7 @@
         <h4>Navigate</h4>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="mission.html">Mission</a></li>
-          <li><a href="history.html">History</a></li>
+          <li><a href="about.html">About</a></li>
           <li><a href="projects.html">Programs</a></li>
           <li><a href="team.html">Team</a></li>
           <li><a href="contact.html">Contact</a></li>
