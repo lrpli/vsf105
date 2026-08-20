@@ -26,6 +26,7 @@
       --topbar-height:       36px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img { filter: saturate(0.92) contrast(1.05) brightness(0.98); }
     html { scroll-behavior: smooth; }
     body { font-family: 'Source Sans 3', sans-serif; font-size: 17px; line-height: 1.65; color: var(--color-text); background: var(--color-bg); }
 
@@ -72,9 +73,10 @@
     .page-hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('https://loremflickr.com/1400/700/cockpit,aviation?lock=3');
+      background-image: url('images/cockpit-aquila.jpg');
       background-size: cover;
       background-position: center;
+      filter: saturate(0.85) contrast(1.05);
       opacity: 0.12;
     }
     .page-hero-content { position: relative; z-index: 1; }
@@ -316,7 +318,7 @@
     <div class="container">
       <div class="vision-split">
         <div class="fade-in">
-          <img src="https://loremflickr.com/900/675/airfield,airplane?lock=4" alt="Small aircraft at airfield, Tennessee" loading="lazy" />
+          <img src="images/airfield-gloucestershire.jpg" alt="Small aircraft at airfield, Tennessee" loading="lazy" />
         </div>
         <div class="fade-in">
           <div class="section-label">Our Commitment</div>

@@ -27,6 +27,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img { filter: saturate(0.92) contrast(1.05) brightness(0.98); }
 
     html { scroll-behavior: smooth; }
 
@@ -202,9 +203,10 @@
     .hero-img {
       position: absolute;
       inset: 0;
-      background-image: url('https://loremflickr.com/1800/900/airplane,aviation?lock=1');
+      background-image: url('images/hero-sunset.jpg');
       background-size: cover;
       background-position: center 40%;
+      filter: saturate(0.95) contrast(1.05);
       transform: scale(1.04);
       transition: transform 12s ease-out;
     }
@@ -722,7 +724,7 @@
         <a href="mission.html" class="btn btn-primary" style="margin-top:10px;">Learn More</a>
       </div>
       <div class="about-img-wrap">
-        <img src="https://loremflickr.com/900/675/airplane,flight?lock=2" alt="Small aircraft flying over Tennessee landscape" loading="lazy" />
+        <img src="images/flight-cessna.jpg" alt="Small aircraft flying over Tennessee landscape" loading="lazy" />
       </div>
     </div>
   </div>
@@ -738,7 +740,7 @@
       <div class="cards-grid">
         <div class="card fade-in">
           <div class="card-img">
-            <img src="https://loremflickr.com/700/525/cockpit,aviation?lock=3" alt="Cockpit instruments and controls" loading="lazy" />
+            <img src="images/cockpit-aquila.jpg" alt="Cockpit instruments and controls" loading="lazy" />
           </div>
           <div class="card-body">
             <h3>Flight Training</h3>
@@ -748,7 +750,7 @@
         </div>
         <div class="card fade-in">
           <div class="card-img">
-            <img src="https://loremflickr.com/700/525/airfield,airplane?lock=4" alt="Airfield with small aircraft" loading="lazy" />
+            <img src="images/airfield-gloucestershire.jpg" alt="Airfield with small aircraft" loading="lazy" />
           </div>
           <div class="card-body">
             <h3>Young Eagles</h3>
@@ -758,7 +760,7 @@
         </div>
         <div class="card fade-in">
           <div class="card-img">
-            <img src="https://loremflickr.com/700/525/airshow,aircraft?lock=5" alt="Aircraft at an air show" loading="lazy" />
+            <img src="images/airshow-formation.jpg" alt="Aircraft at an air show" loading="lazy" />
           </div>
           <div class="card-body">
             <h3>Fly-Ins &amp; Events</h3>
@@ -807,10 +809,10 @@
   <!-- PHOTO STRIP -->
   <section style="padding: 0; overflow: hidden;">
     <div style="display:grid; grid-template-columns: repeat(4, 1fr); height: 220px;">
-      <img src="https://loremflickr.com/500/375/sunset,airplane?lock=6" alt="Sunset flying" style="width:100%; height:100%; object-fit:cover; display:block;" loading="lazy" />
-      <img src="https://loremflickr.com/500/375/pilot,cockpit?lock=7" alt="Pilot in cockpit" style="width:100%; height:100%; object-fit:cover; display:block;" loading="lazy" />
-      <img src="https://loremflickr.com/500/375/aerial,landscape?lock=8" alt="Tennessee scenery from air" style="width:100%; height:100%; object-fit:cover; display:block;" loading="lazy" />
-      <img src="https://loremflickr.com/500/375/airplane,flying?lock=9" alt="Light aircraft in flight" style="width:100%; height:100%; object-fit:cover; display:block;" loading="lazy" />
+      <img src="images/sunset-silhouette.jpg" alt="Sunset flying" style="width:100%; height:100%; object-fit:cover; display:block;" loading="lazy" />
+      <img src="images/cockpit-diamond.jpg" alt="Pilot in cockpit" style="width:100%; height:100%; object-fit:cover; display:block;" loading="lazy" />
+      <img src="images/aerial-tn-valley.jpg" alt="Tennessee scenery from air" style="width:100%; height:100%; object-fit:cover; display:block;" loading="lazy" />
+      <img src="images/flying-small.jpg" alt="Light aircraft in flight" style="width:100%; height:100%; object-fit:cover; display:block;" loading="lazy" />
     </div>
   </section>
 
